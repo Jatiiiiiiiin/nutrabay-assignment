@@ -1,0 +1,8 @@
+{
+  "name": "Asterix-find",
+  "description": "AI-powered job matching platform that connects talent with opportunities using advanced neural matching and automated application agents.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ]
+}

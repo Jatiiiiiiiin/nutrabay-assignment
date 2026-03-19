@@ -1,0 +1,45 @@
+services:
+  - type: web
+    name: asterix-backend
+    env: python
+    plan: free
+    # Point to ai-engine subfolder
+    root: ai-engine
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn api:app --host 0.0.0.0 --port $PORT
+    
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11
+      - key: PORT
+        value: 8000
+      
+      # Cashfree Payment Gateway (set actual keys in Render dashboard)
+      - key: CASHFREE_APP_ID
+        fromService:
+          type: env
+          name: CASHFREE_APP_ID
+      
+      - key: CASHFREE_SECRET_KEY
+        fromService:
+          type: env
+          name: CASHFREE_SECRET_KEY
+      
+      - key: CASHFREE_ENV
+        value: production
+      
+      # Frontend URL for CORS
+      - key: FRONTEND_URL
+        fromService:
+          type: env
+          name: FRONTEND_URL
+      
+      - key: RESEND_API_KEY
+        fromService:
+          type: env
+          name: RESEND_API_KEY
+
+      - key: RESEND_FROM_EMAIL
+        fromService:
+          type: env
+          name: RESEND_FROM_EMAIL

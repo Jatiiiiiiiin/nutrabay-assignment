@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+
+@theme {
+    --color-primary: #000000;
+    --color-accent-violet: #333333;
+    --color-background-light: #ffffff;
+    --color-background-dark: #0a0a0a;
+    --color-border-gray: #e5e5e5;
+
+    --font-display: "Montserrat", sans-serif;
+    --font-sans: "Inter", sans-serif;
+
+    --radius-default: 0px;
+    --radius-lg: 0px;
+    --radius-xl: 0px;
+}
+
+/* Base Styles from index.html */
+@layer base {
+    body {
+        @apply font-sans;
+    }
+
+    h1,
+    h2 {
+        @apply font-display font-black uppercase;
+    }
+
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-display font-bold;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        @apply !rounded-none;
+    }
+}
+
+/* Custom Utilities and Components from index.html */
+@layer utilities {
+    .glass-nav {
+        backdrop-filter: blur(8px);
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .dark .glass-nav {
+        background-color: rgba(10, 10, 10, 0.9);
+    }
+
+    .hero-gradient {
+        background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.02) 0%, rgba(255, 255, 255, 0) 70%);
+    }
+
+    /* Custom Scrollbar */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #000;
+    }
+
+    /* Skeleton Loading */
+    .skeleton {
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        animation: skeleton-loading 1.5s infinite linear;
+    }
+
+    .dark .skeleton {
+        background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+        background-size: 200% 100%;
+    }
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
